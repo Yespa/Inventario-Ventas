@@ -14,6 +14,8 @@ app.set("port", 3010);
 //Middleware
 app.use(morgan("dev"));
 app.use(express.json());
+app.use(express.static("public"));
+
 
 //Variables globales
 

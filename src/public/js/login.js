@@ -31,9 +31,7 @@ document.getElementById('login').addEventListener('click', function() {
     datau.user = document.getElementById("usuario").value;
     datau.pass = document.getElementById("contrasena").value;
     
-    //document.getElementById("nusuario1").innerHTML = usuario;
-
-    //Esto hace parte del la nuevas    
+    //Envio al server en un json los datos obtenidos del la pagina    
     $.post({
         url: "/login",
         
@@ -46,8 +44,7 @@ document.getElementById('login').addEventListener('click', function() {
         {
             alertify.alert('Nombre de usuario y/o contraseña incorrectos');
         }
-                
-            
+                   
         }
     });
 });
@@ -60,48 +57,47 @@ document.getElementById('cambio').addEventListener('click', function() {
     datau.pass = document.getElementById("contrasena").value;
     
     //document.getElementById("nusuario1").innerHTML = usuario;
-
     
-    $.post({
-        url: "/login",
+    // $.post({
+    //     url: "/login",
         
-        data: JSON.stringify(datau),
-        contentType: "application/json",
-        success: function(datosEntrada,status) {
-        if(datosEntrada === "Ok") {
-            console.log("Ingreso cambio exitoso");
+    //     data: JSON.stringify(datau),
+    //     contentType: "application/json",
+    //     success: function(datosEntrada,status) {
+    //     if(datosEntrada === "Ok") {
+    //         console.log("Ingreso cambio exitoso");
 
-            if($("#cambio").text() === "Restablecer contraseña"){
-                $(".ocultar_cambio").show();
-                text="Ocultar cambio"
-                $("#cambio").html(text)
+    //         if($("#cambio").text() === "Restablecer contraseña"){
+    //             $(".ocultar_cambio").show();
+    //             text="Ocultar cambio"
+    //             $("#cambio").html(text)
 
-            }else if($("#cambio").text() === "Ocultar cambio"){
-                $(".ocultar_cambio").hide();
-                text="Restablecer contraseña"
-                $("#cambio").html(text)
-            }
+    //         }else if($("#cambio").text() === "Ocultar cambio"){
+    //             $(".ocultar_cambio").hide();
+    //             text="Restablecer contraseña"
+    //             $("#cambio").html(text)
+    //         }
             
-            bandera_ocultar = 1;
+    //         bandera_ocultar = 1;
             
                 
-        }else{
+    //     }else{
                         
-            if($("#cambio").text() === "Ocultar cambio"){
-                $(".ocultar_cambio").hide();
-                text="Restablecer contraseña"
-                $("#cambio").html(text)
-            }
+    //         if($("#cambio").text() === "Ocultar cambio"){
+    //             $(".ocultar_cambio").hide();
+    //             text="Restablecer contraseña"
+    //             $("#cambio").html(text)
+    //         }
                     
-            if(bandera_ocultar == 0){    
-                alertify.alert('Nombre de usuario y/o contraseña incorrectos');
-            }
-            bandera_ocultar =0;
-        }
+    //         if(bandera_ocultar == 0){    
+    //             alertify.alert('Nombre de usuario y/o contraseña incorrectos');
+    //         }
+    //         bandera_ocultar =0;
+    //     }
             
             
-        }
-    });
+    //     }
+    // });
 });
 
 
@@ -111,26 +107,26 @@ document.getElementById('B_change_pass').addEventListener('click', function() {
     datac.passnew = document.getElementById("contrasena_nueva").value;
     datac.confirmpass = document.getElementById("confirme_contrasena").value;
   
-    $.post({
-        url: "/change_pass",
-        data: JSON.stringify(datac),
-        contentType: "application/json",
-        success: function(datosEntrada,status) {
-        if(datosEntrada === "ok_c") {
-            //alertify.alert('¡Cambio de contraseña exitoso!');
-            //alert("Cambio de contraseña exitoso!");
-            window.location.replace("/");
-        }
-        else if (datosEntrada === "Not_OK"){
-            //alert("Las contraseñas no coinciden, vuelva a intentarlo.");
-            alertify.error('Las contraseñas no coinciden, vuelva a intentarlo.');
-        }
-        else if (datosEntrada === "User_NOT"){
-            alertify.alert('Por favor revise nuevamente el usuario digitado, RECUERDE que debe ser el mismo con el que se logueo.');
-            //alert("Por favor revise nuevamente el usuario digitado, RECUERDE que debe ser el mismo con el que se logueo.");
-        }
+    // $.post({
+    //     url: "/change_pass",
+    //     data: JSON.stringify(datac),
+    //     contentType: "application/json",
+    //     success: function(datosEntrada,status) {
+    //     if(datosEntrada === "ok_c") {
+    //         //alertify.alert('¡Cambio de contraseña exitoso!');
+    //         //alert("Cambio de contraseña exitoso!");
+    //         window.location.replace("/");
+    //     }
+    //     else if (datosEntrada === "Not_OK"){
+    //         //alert("Las contraseñas no coinciden, vuelva a intentarlo.");
+    //         alertify.error('Las contraseñas no coinciden, vuelva a intentarlo.');
+    //     }
+    //     else if (datosEntrada === "User_NOT"){
+    //         alertify.alert('Por favor revise nuevamente el usuario digitado, RECUERDE que debe ser el mismo con el que se logueo.');
+    //         //alert("Por favor revise nuevamente el usuario digitado, RECUERDE que debe ser el mismo con el que se logueo.");
+    //     }
                 
             
-        }
-    });
+    //     }
+    // });
 });
