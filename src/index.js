@@ -10,14 +10,16 @@ const app = express();
 
 //Configuracion del server
 app.set("port", 3010);
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.set('view', path.join(__dirname, 'public'));
+
 
 //Middleware
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.static("public"));
 app.use(express.urlencoded({extended: false}));
+
 
 //Rutas
 

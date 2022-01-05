@@ -24,14 +24,15 @@ router.get("/home",function(request,response) {
 router.get("/inventario",function(request,response) {
   if (ingreso) {
         console.log("Ingreso inventario exitoso");
-        response.sendFile("C:/Inventario-Ventas/src/public/inventario.html");
+        //response.sendFile("C:/Inventario-Ventas/src/public/inventario.html");
         mysqlConnection.query('SELECT * FROM inventario', (err, rows) => {
           
           if (err){
             response.json(err);
           }
           console.log(rows)
-          //response.render("C:/Inventario-Ventas/src/public/inventario.html");
+    
+          response.render("inventario", {lista:rows});
 
         });
   } else {
@@ -40,12 +41,12 @@ router.get("/inventario",function(request,response) {
     
   });
 
-//GET all Employees
+// // GET all Employees
 // router.get('/info', (req, res) => {
 
 //   var name = 'hello';
     
-//   res.render("login", {name:name});
+//   res.render("yes", {name:name});
 
 //   });
 
@@ -90,10 +91,19 @@ router.post("/add_inventory", function(request,response){
 
   mysqlConnection.query('INSERT INTO inventario set ?', [data_newInventario], function(error, result, fields) {
     console.log(result);
-    response.send("Melo")
+    response.redirect("/inventario")
   });
 
 });
+
+router.get("/delete_inventory/:idinventario", function(request,response){
+  
+  const { idinventario } = request.params;
+  mysqlConnection.query('DELETE FROM inventario WHERE idinventario = ?', [idinventario], (err, rows) => {
+    response.redirect('/inventario');
+  });
+});
+
 
 
 
