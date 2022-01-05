@@ -9,13 +9,13 @@
         font-family:Baskerville;
     
         /* LE PONGO COLOR A LA LETRA Y AL BORDE DE ELLA*/
-        -webkit-text-fill-color: rgb(255, 255, 255);
+        -webkit-text-fill-color: rgb(167, 157, 134);
         -webkit-text-stroke: 0.1px rgb(212, 175, 55);
     
 }
 
 .edit_boton{
-    font: bold 15px Verdana;
+    font: bold 15px Arial;
     text-decoration:none;
     border:2px solid rgb(212, 175, 55);
     padding:5px 10px 5px 10px;
@@ -24,13 +24,13 @@
 }
 
 .edit_boton:hover{
-    background: rgb(228, 223, 91);
+    background: rgb(242, 238, 123);
     color: white;
 
 }
 
 .edit{
-    font: 15px "Segoe UI";
+    font: 15px Arial;
     border: solid 2px rgb(212, 175, 55);
     padding:  10px;
     border-radius: 7px;

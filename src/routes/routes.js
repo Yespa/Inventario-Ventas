@@ -21,23 +21,40 @@ router.get("/home",function(request,response) {
     
   });
 
-// GET all Employees
-router.get('/info', (req, res) => {
-    mysqlConnection.query('SELECT * FROM user', (err, rows, fields) => {
-      if(!err) {
-        res.json(rows);
-      } else {
-        console.log(err);
-      }
-    });  
+router.get("/inventario",function(request,response) {
+  if (ingreso) {
+        console.log("Ingreso inventario exitoso");
+        response.sendFile("C:/Inventario-Ventas/src/public/inventario.html");
+        mysqlConnection.query('SELECT * FROM inventario', (err, rows) => {
+          
+          if (err){
+            response.json(err);
+          }
+          console.log(rows)
+          //response.render("C:/Inventario-Ventas/src/public/inventario.html");
+
+        });
+  } else {
+    response.send("No se ha autenticado");
+  }
+    
   });
+
+//GET all Employees
+// router.get('/info', (req, res) => {
+
+//   var name = 'hello';
+    
+//   res.render("login", {name:name});
+
+//   });
 
 
 //Obtengo en un json los datos ingresados por el usuario en el html de login
 router.post("/login",function(request,response) {
     //Almaceno el json
     let data = request.body;
-
+    console.log(data)
     //inicializo el obj donde voy almacenar la info obtenido de DB
     var data_user = {};
     //console.log(data,"first");
@@ -62,10 +79,20 @@ router.post("/login",function(request,response) {
   } else {
     response.send('Ingrese usuario y contraseña!');
   }
-
-
-
     
+});
+
+
+
+router.post("/add_inventory", function(request,response){
+  console.log(request.body);
+  const data_newInventario = request.body;
+
+  mysqlConnection.query('INSERT INTO inventario set ?', [data_newInventario], function(error, result, fields) {
+    console.log(result);
+    response.send("Melo")
+  });
+
 });
 
 

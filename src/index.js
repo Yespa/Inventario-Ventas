@@ -2,6 +2,7 @@
 //Importo frameworks y modulos
 const express = require("express");
 const morgan = require("morgan");
+const path = require("path");
 
 
 //Inicializo express
@@ -9,18 +10,14 @@ const app = express();
 
 //Configuracion del server
 app.set("port", 3010);
-
+app.set('view engine', 'ejs');
+app.set('view', path.join(__dirname, 'public'));
 
 //Middleware
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.static("public"));
-
-
-//Variables globales
-
-
-//Public
+app.use(express.urlencoded({extended: false}));
 
 //Rutas
 

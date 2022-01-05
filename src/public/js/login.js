@@ -30,7 +30,7 @@ var bandera_ocultar = 0;
 document.getElementById('login').addEventListener('click', function() {
     datau.user = document.getElementById("usuario").value;
     datau.pass = document.getElementById("contrasena").value;
-    
+
     //Envio al server en un json los datos obtenidos del la pagina    
     $.post({
         url: "/login",
