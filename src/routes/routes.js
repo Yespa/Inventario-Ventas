@@ -86,7 +86,7 @@ router.post("/login",function(request,response) {
 
 
 router.post("/add_inventory", function(request,response){
-  console.log(request.body);
+  //console.log(request.body);
   const data_newInventario = request.body;
 
   mysqlConnection.query('INSERT INTO inventario set ?', [data_newInventario], function(error, result, fields) {
@@ -96,11 +96,31 @@ router.post("/add_inventory", function(request,response){
 
 });
 
+router.post("/update_inventory/:idinventario", function(request,response){
+  
+  const { idinventario } = request.params;
+  const newProduct = request.body;
+
+  mysqlConnection.query('UPDATE inventario set ? WHERE idinventario = ?', [newProduct, idinventario], (err, producto) => {
+    response.redirect('/inventario');
+  });
+});
+
+router.get("/select_inventory/:idinventario", function(request,response){
+  
+  const { idinventario } = request.params;
+  mysqlConnection.query('SELECT * FROM inventario WHERE idinventario = ?', [idinventario], (err, producto) => {
+    response.render("select_inventario", {lista:producto[0]});
+
+  });
+});
+
+
 router.get("/delete_inventory/:idinventario", function(request,response){
   
   const { idinventario } = request.params;
   mysqlConnection.query('DELETE FROM inventario WHERE idinventario = ?', [idinventario], (err, rows) => {
-    response.redirect('/inventario');
+   response.redirect('/inventario');
   });
 });
 

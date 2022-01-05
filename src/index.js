@@ -17,7 +17,9 @@ app.set('view engine', 'ejs');
 //Middleware
 app.use(morgan("dev"));
 app.use(express.json());
+//app.use(express.static("src"));
 app.use(express.static("public"));
+
 app.use(express.urlencoded({extended: false}));
 
 

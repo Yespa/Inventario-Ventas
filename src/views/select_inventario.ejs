@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="/imagenes/iconos/icono_f.ico">
+	<link href="/css/icon_menu.css" rel="stylesheet">
+	<link href="/css/banner.css" rel="stylesheet">
+    <link href="/css/menu.css" rel="stylesheet">
+	<link href="/css/estilo_home.css" rel="stylesheet">
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/animate.css" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celuflash - Inventario</title>
+</head>
+<body>
+	<header class="animate__animated animate__slideInDown">
+		<nav>
+			<ul>
+				<li><a href="http://localhost:3010/home"><span class="primero"><i class="icon icon-home"></i></span>Inicio</a></li>
+				<li><a href="#"><span class="segundo"><i class="icon icon-list"></i></span>Administración</a>
+					<ul>
+						<li><a href="http://localhost:3010/inventario"><i class="icon icon-clipboard"></i>Inventario</a></li>
+						<li><a href="http://localhost:3010/ventas"><i class="icon icon-cart"></i>Ventas</a></li>
+						<li><a href="http://localhost:3010/gastos"><i class="icon icon-power"></i>Gastos</a></li>
+						<li><a href="http://localhost:3010/ganancia"><i class="icon icon-coin-dollar"></i>Ganancias</a></li>
+					</ul>
+				</li>
+
+				<li><a id="exit" href="http://localhost:3010/"><span class="cuarto"><i class="icon icon-exit"></i></span>Salir</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<section id="banner" class="animate__animated animate__slideInDown">
+			<img src="/imagenes/Banner_prueba.jpg">
+		</section>
+
+	</main>
+	<br>
+
+	<div class="container">
+		<article class="col-md-12 animate__animated animate__zoomIn">
+		
+			<center><h2>Edición de producto.</h2></center>
+		</article>
+		<div class="row">
+			<div class="col-md-5">
+				<div class="card">
+					<div class="card-body">
+						                            
+						<form action="/update_inventory/<%= lista.idinventario %>" method="post">
+							
+							<div class="form-group">
+								<input type="text" name="id_prod" value="<%= lista.id_prod %>" class="form-control">
+							</div>
+							<div class="form-group">
+								<input type="text" name="name_prod" value="<%= lista.name_prod %>" class="form-control">
+							</div>
+							<div class="form-group">
+								<input type="text" name="precio" value="<%= lista.precio %>" class="form-control">
+							</div>
+							<div class="form-group">
+								<input type="text" name="cant" value="<%= lista.cant %>" class="form-control">
+							</div>
+							<button type="submit" class="btn btn-primary">Editar producto</button>
+
+						</form>
+					</div>
+				</div>
+
+			</div>
+			<div class="col-md-7">
+				<br>
+				<br>
+				<div align="center"><img src="/imagenes/logo_peq.jpg"></div>
+			</div>
+		</div>
+
+	</div>
+	 
+	<footer class="animate__animated animate__slideInUp">
+		<div align="center"><img src="/imagenes/logo2.png"></div>
+		<div align="center"><p>Desing by Yespa</p></div>
+		
+	</footer>
+
+
+	<script src="/jquery/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<!-- <script src="js/home.js"></script> -->
+	 	 
+</body>
+</html>
