@@ -3,6 +3,7 @@ const router = express.Router();
 
 var ingreso = false;
 var tabla_all_productos = [];
+var factura = [];
 const mysqlConnection = require("../db");
 
 
@@ -73,13 +74,25 @@ router.get("/gastos",function(request,response) {
 router.get("/ventas",function(request,response) {
   if (ingreso) {
         console.log("Ingreso Ventas exitoso");      
-    
-        response.render("ventas", {lista:tabla_all_productos});
-
+  
+        response.render("ventas",{lista:tabla_all_productos,lis:factura});
+        
   } else {
     response.send("No se ha autenticado");
   }
     
+  });
+
+  router.get("/add/:idinventario", function(request,response){
+  
+    const { idinventario } = request.params;
+    mysqlConnection.query('SELECT * FROM inventario WHERE idinventario = ?', [idinventario], (err, producto_selec) => {
+      console.log(factura);
+      factura.push(producto_selec[0]);
+      console.log(factura);
+      response.redirect("/ventas");
+    });
+
   });
 
 
@@ -121,7 +134,7 @@ router.post("/search_inventory", function(request,response){
   console.log(busqueda.busqueda);
   mysqlConnection.query('SELECT * FROM inventario WHERE concat(id_prod,name_prod) LIKE "%'+ busqueda.busqueda +'%"', function(error, result) {
     console.log(result);
-    response.render("ventas", {lista:result});
+    response.render("ventas", {lista:result,lis:factura});
   });
 
 });
