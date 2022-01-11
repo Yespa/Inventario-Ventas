@@ -100,7 +100,7 @@ router.get("/ventas",function(request,response) {
 router.post("/login",function(request,response) {
     //Almaceno el json
     let data = request.body;
-    console.log(data)
+    console.log(data);
     //inicializo el obj donde voy almacenar la info obtenido de DB
     var data_user = {};
     //console.log(data,"first");
