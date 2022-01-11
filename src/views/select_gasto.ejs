@@ -11,7 +11,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Celuflash - Inventario</title>
+    <title>Celuflash - Edición de gasto</title>
 </head>
 <body>
 	<header class="animate__animated animate__slideInDown">
@@ -43,35 +43,25 @@
 	<div class="container">
 		<article class="col-md-12 animate__animated animate__zoomIn">
 		
-			<center><h2>Edición de producto.</h2></center>
+			<center><h2>Edición de gasto.</h2></center>
 		</article>
 		<div class="row">
 			<div class="col-md-5">
 				<div class="card">
 					<div class="card-body">
 						                            
-						<form action="/update_inventory/<%= lista.idinventario %>" method="post">
+						<form action="/update_gasto/<%= lista.idgastos %>" method="post">
+							
 							
 							<div class="form-group">
-								<label>Código</label>
-								<input type="number" name="id_prod" value="<%= lista.id_prod %>" class="form-control">
-							</div>
-							<div class="form-group">
-								<label>Nombre del producto</label>
-								<input type="text" name="name_prod" value="<%= lista.name_prod %>" class="form-control">
+								<label>Nombre del gasto</label>
+								<input type="text" name="nombre_gasto" value="<%= lista.nombre_gasto %>" class="form-control">
 							</div>
 							<div class="form-group">
 								<label>Precio de compra</label>
-								<input type="number" name="precio_compra" value="<%= lista.precio_compra %>" class="form-control">
+								<input type="number" name="valor" value="<%= lista.valor %>" class="form-control">
 							</div>
-							<div class="form-group">
-								<label>Precio de venta</label>
-								<input type="number" name="precio_venta" value="<%= lista.precio_venta %>" class="form-control">
-							</div>
-							<div class="form-group">
-								<label>Cantidad</label>
-								<input type="number" name="cant" value="<%= lista.cant %>" class="form-control">
-							</div>
+
 							<button type="submit" class="btn btn-primary">Editar producto</button>
 
 						</form>

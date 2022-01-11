@@ -11,7 +11,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Celuflash - Inventario</title>
+    <title>Celuflash - Gastos</title>
 </head>
 <body>
 	<header class="animate__animated animate__slideInDown">
@@ -42,18 +42,16 @@
 
 	<div class="container">
 		<article class="col-md-12 animate__animated animate__zoomIn">
-			<center><h2>Inventario.</h2></center>
+			<center><h2>Gastos.</h2></center>
 		</article>
 		<div class="row mt-5">
 			<div class="col-md-8">
 				<table class="table table-bordered table-hover">
 					<thead>
 						<tr>
-                            <th>Código</th>
-							<th>Nombre</th>
-							<th>P. Compra</th>
-							<th>P. Venta</th>
-							<th>Cantidad</th>
+                            <th>Nombre</th>
+							<th>Valor</th>
+							<th>Fecha</th>
                             <th>Acción</th>
 						</tr>
 					</thead>
@@ -62,14 +60,12 @@
                         <% if (lista) { %>
                             <% for(var i = 0; i < lista.length; i++) { %>
                               <tr>
-                                <td><%= lista[i].id_prod %></td>
-                                <td><%= lista[i].name_prod %></td>
-                                <td><%= lista[i].precio_compra %></td>
-								<td><%= lista[i].precio_venta %></td>
-                                <td><%= lista[i].cant %></td>
+                                <td><%= lista[i].nombre_gasto %></td>
+                                <td><%= lista[i].valor %></td>
+                                <td><%= lista[i].fecha_gasto %></td>
                                 <td>
-                                  <a href="/select_inventory/<%= lista[i].idinventario %>" class="btn btn-info">Editar</a>
-                                  <a href="/delete_inventory/<%= lista[i].idinventario %>" class="btn btn-danger">Eliminar</a>
+                                  <a href="/select_gasto/<%= lista[i].idgastos %>" class="btn btn-info">Editar</a>
+                                  <a href="/delete_gasto/<%= lista[i].idgastos %>" class="btn btn-danger">Eliminar</a>
                                 </td>
                               </tr>
                             <% } %>
@@ -82,24 +78,16 @@
 				<div class="card">
 					<div class="card-body">
 						
-						<form action="/add_inventory" method="post">
+						<form action="/add_gasto" method="post">
 							
 							<div class="form-group">
-								<input type="number" name="id_prod" placeholder="Código del producto" class="form-control">
+								<input type="text" name="nombre_gasto" placeholder="Nombre del gasto" class="form-control">
 							</div>
 							<div class="form-group">
-								<input type="text" name="name_prod" placeholder="Nombre del producto" class="form-control">
+								<input type="number" name="valor" placeholder="Valor del gasto" class="form-control">
 							</div>
-							<div class="form-group">
-								<input type="number" name="precio_compra" placeholder="Precio compra" class="form-control">
-							</div>
-							<div class="form-group">
-								<input type="number" name="precio_venta" placeholder="Precio venta" class="form-control">
-							</div>
-							<div class="form-group">
-								<input type="number" name="cant" placeholder="Cantidad" class="form-control">
-							</div>
-							<button type="submit" class="btn btn-primary">Agregar producto</button>
+
+							<button type="submit" class="btn btn-primary">Agregar gasto</button>
 
 						</form>
 					</div>
