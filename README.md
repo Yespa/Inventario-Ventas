@@ -17,6 +17,6 @@ En este proyecto de desarrolla una página web usando HTML5, EJS, CSS y ​JS qu
 
 ### Página de Gastos.
 
-<img src="Attachments/img/Gastos.pbg" width=80%> <br>
+<img src="Attachments/img/Gastos.png" width=80%> <br>
 
 
