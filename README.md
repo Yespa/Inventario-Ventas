@@ -6,14 +6,14 @@ En este proyecto de desarrolla una página web usando HTML5, EJS, CSS y ​JS qu
 
 ### Página de login.
 
-<img src="Attachments/img/Login.png" width=40%> <br>
+<img src="Attachments/img/Login.png" > <br>
 
 ### Página home.
 
-<img src="Attachments/img/home.png" width=40%> <br>
+<img src="Attachments/img/home.png" width=80%> <br>
 
 ### Página de Inventario.
-<img src="Attachments/img/Inventario.png" width=40%> <br>
+<img src="Attachments/img/Inventario.png" width=70%> <br>
 
 ### Página de Gastos.
 
