@@ -4,11 +4,10 @@
     <link rel="shortcut icon" href="/imagenes/iconos/icono_f.ico">
 	<link href="/css/icon_menu.css" rel="stylesheet">
 	<link href="/css/banner.css" rel="stylesheet">
-    <link href="/css/menu.css" rel="stylesheet">
-	<link href="/css/estilo_home.css" rel="stylesheet">
+	<link href="/css/estilo_ventas.css" rel="stylesheet">
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/animate.css" rel="stylesheet">
-    <link href="/alertas/css/alertify.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
     <link href="/alertas/css/themes/default.css" rel="stylesheet">
 
     <meta charset="UTF-8">
@@ -16,33 +15,62 @@
     <title>Celuflash - Ventas</title>
 </head>
 <body>
-	<header class="animate__animated animate__slideInDown">
-		<nav>
-			<ul>
-				<li><a href="http://localhost:3010/home"><span class="primero"><i class="icon icon-home"></i></span>Inicio</a></li>
-				<li><a href="#"><span class="segundo"><i class="icon icon-list"></i></span>Administración</a>
-					<ul>
-						<li><a href="http://localhost:3010/inventario"><i class="icon icon-clipboard"></i>Inventario</a></li>
-						<li><a href="http://localhost:3010/ventas"><i class="icon icon-cart"></i>Ventas</a></li>
-						<li><a href="http://localhost:3010/gastos"><i class="icon icon-power"></i>Gastos</a></li>
-						<li><a href="http://localhost:3010/ganancia"><i class="icon icon-coin-dollar"></i>Ganancias</a></li>
-					</ul>
-				</li>
+	<header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <!-- Container wrapper -->
+            <div class="container-fluid">
+                                      
+              <!-- Collapsible wrapper -->
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Navbar brand -->
+                <a class="navbar-brand mt-2 mt-lg-0" href="#">
+                    <img src="/imagenes/logo.png" width="30" height="30" alt="">
+                </a>
+                <!-- Left links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:3010/home"><i class="icon icon-home"></i></a>
+                  </li>
 
-				<li><a id="exit" href="http://localhost:3010/"><span class="cuarto"><i class="icon icon-exit"></i></span>Salir</a></li>
-			</ul>
-		</nav>
+                </ul>
+                <!-- Left links -->
+              </div>
+                        
+              <!-- Right elements -->
+              <div class="d-flex align-items-center">
+                                
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                      <a class="nav-link" href="http://localhost:3010/inventario"><i class="icon icon-clipboard"></i> Inventario</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="http://localhost:3010/gastos"><i class="icon icon-power"></i> Gastos</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="http://localhost:3010/ventas"><i class="icon icon-cart"></i> Ventas</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="http://localhost:3010/plansepare"><i class="icon icon-list"></i> Plan Separe</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="http://localhost:3010/ganancia"><i class="icon icon-coin-dollar"></i> Ganancia</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="http://localhost:3010/"><i class="icon icon-exit"></i>Salir</a>
+                    </li>
+                    
+                </ul>
+                  
+              </div>
+              <!-- Right elements -->
+            </div>
+            <!-- Container wrapper -->
+        </nav>
+        
 	</header>
 
-	<main>
-		<section id="banner" class="animate__animated animate__slideInDown">
-			<img src="/imagenes/Banner_prueba.jpg">
-		</section>
-
-	</main>
-	<br>
-
     <div class="container">
+        
         <article class="col-md-12 animate__animated animate__zoomIn">
 			<center><h2>Ventas.</h2></center>
 		</article>
@@ -50,7 +78,7 @@
         <section class="row">
 
             <div class="col-md-4 ajuste animate__animated animate__fadeInBottomLeft">			
-                <div class="card">
+                <div class="card text-white" style="background-color: #0e2c40;">
                                         
                     <div class="card-body">
 
@@ -64,7 +92,7 @@
             
             
             <div class="col-md-4 ajuste animate__animated animate__fadeInBottomRight">
-                <div class="card">
+                <div class="card text-white" style="background-color: #006494;">
                     <div class="card-body">
                             
                         <h4 class="card-title">###.</h4>
@@ -76,7 +104,7 @@
             </div>
 
             <div class="col-md-4 ajuste animate__animated animate__fadeInBottomLeft">
-                <div class="card">
+                <div class="card text-white" style="background-color: #2970ca;">
                     <div class="card-body">
                                 
                         <h4 class="card-title">###.</h4>
@@ -91,7 +119,9 @@
 
         </section>
     </div>
+    
 
+    <!-- Buscador -->
     <div class="container">
         
 		<div class="row mt-1">
@@ -101,12 +131,12 @@
 					<div class="card-body">
                         <form action="/search_inventory" method="post">
                             <div class="form-row">
-                                <div class="col-8">
+                                <div class="col-10">
                                     <input type="text" name="busqueda" class="form-control" placeholder="Ingrese el nombre de producto o el código">
                                 </div>
 
                                 <div class="col">
-                                    <button type="submit" class="btn btn-primary">Buscar</button>
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
                                 </div>
 
                                 <div class="col">
@@ -119,9 +149,76 @@
 				</div>
 
 			</div>
+                        
+            <div class="col-md-6">
+				<div class="card">
+					<div class="card-body">
+                        <form >
+                            <div class="form-row">
+
+                                <div class="col">
+                                    <h4 >Total factura</h4>
+                                </div>
+
+                                <div class="col">
+                                    <input type="number" name="valor_pagar" class="form-control" placeholder="0" readonly class="form-control-plaintext" value="<%= total[0].total_pagar %>">
+                                </div>
+
+                                <div class="col-1">
+                                    <button type="submit" class="btn btn-success"><i class="fa fa-shopping-cart"></i></button>
+                                </div>
+
+                                <div class="col-1">
+                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                </div>
+                            </div>
+
+                        </form>  
+                       
+					</div>
+				</div>
+
+			</div>
         </div>
     </div>    
 
+    <!-- Ventana emergente de agregar producto -->
+    <!-- Modal -->
+    <div class="modal fade" id="addproducmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Producto a vender</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    
+                    <div class="form-group">
+                      <label for="formGroupExampleInput">Producto</label>
+                      <input id="nameproductmodal" type="text" class="form-control" placeholder="Nameproducto" readonly class="form-control-plaintext">
+                    </div>
+                    <div class="form-group">
+                      <label for="formGroupExampleInput2">Cantidad</label>
+                      <input id="cantproductmodal" type="number" min="1" max="100" class="form-control" placeholder="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">Precio</label>
+                        <input id="precioproductmodal" type="number" class="form-control" placeholder="Another input">
+                      </div>
+                  </form>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Descartar</button>
+            <button id="add_prod_venta" type="button" class="btn btn-success">Agregar a la factura</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Inventario -->
     <div class="container">
         
 		<div class="row mt-2">
@@ -146,7 +243,8 @@
 								<td><%= lista[i].precio_venta %></td>
                                 <td><%= lista[i].cant %></td>
                                 <td>
-                                  <a href="/add/<%= lista[i].idinventario %>" class="btn btn-success">+</a>
+                                    <button id="add" class="btn btn-success" value="<%= lista[i].idinventario %>" onclick="obtener(value)" ><i class="fa fa-plus"></i></button>
+                                    <div style="visibility: hidden">value = <%= lista[i].idinventario %></div>
                                 </td>
                               </tr>
                             <% } %>
@@ -155,6 +253,7 @@
 					</tbody>
 				</table>
 			</div>
+
 			<div class="col-md-6">
 									
                 <div class="card">
@@ -163,26 +262,40 @@
 						<form>
                             <div class="form-group row">
                                 <div class="col-sm-5">
-                                    <label class="">Producto</label>
+                                    <h6 >Producto</h6>
                                 </div>
                                 <div class="col-sm-2">
-                                    <label class="label label-default">Cantidad</label>
+                                    <h6 >Cant.</h6>
                                 </div>
                                 <div class="col-sm-3">
-                                    <label class="">Precio</label>
-                                </div>  
+                                    <h6 >Precio</h6>
+                                </div>
+                                <div class="col-sm-0.5">
+                                    <h6 ></h6>
+                                </div>
+                                <div class="col-sm-0.5">
+                                    <h6 ></h6>
+                                </div>    
                             </div>
                             <div class="form-group row">
                                 <% if (lis) { %>
                                     <% for(var i = 0; i < lis.length; i++) { %>
                                         <div class="col-sm-5">
-                                            <input type="text" name="name_prod" value="<%= lis[i].name_prod %>" readonly class="form-control-plaintext">
+                                            <input type="text" name="nameprod" value="<%= lis[i].nameprod %>" readonly class="form-control-plaintext">
                                         </div>
                                         <div class="col-sm-2">
-                                            <input type="number" class="form-control" id="inputPassword" placeholder="1">
+                                            <input type="number" min="1" max="100" name="cant" class="form-control" value="<%= lis[i].cant %>" readonly class="form-control-plaintext">
                                         </div>
                                         <div class="col-sm-3">
-                                            <input type="number" name="precio_venta" value="<%= lis[i].precio_venta %>" class="form-control">
+                                            <input type="number" name="precio_vent" value="<%= lis[i].precio_vent %>" class="form-control" readonly class="form-control-plaintext">
+                                        </div>
+                                        <div class="col-sm-0.5">
+                                            <!-- Button trigger modal -->
+                                            <a class="btn btn-success" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-pencil"></i></a>
+                                        </div>
+                                        <div class="col-sm-0.5">
+                                            <!-- Button trigger modal -->
+                                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                         </div>
                                       
                                     <% } %>
@@ -210,9 +323,12 @@
 
 
 	<script src="/jquery/jquery.min.js"></script>
+
+    
+    <!-- Core plugin JavaScript-->
+    <script src="jquery-easing/jquery.easing.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
-    <script src="/alertas/alertify.js"></script>
-	<!-- <script src="js/home.js"></script> -->
+	<script src="/js/ventas.js"></script>
 	 	 
 </body>
 </html>
