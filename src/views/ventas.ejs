@@ -169,7 +169,7 @@
                                 </div>
 
                                 <div class="col-1">
-                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                    <a href="/delete_factura" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                 </div>
                             </div>
 
@@ -243,8 +243,8 @@
 								<td><%= lista[i].precio_venta %></td>
                                 <td><%= lista[i].cant %></td>
                                 <td>
-                                    <button id="add" class="btn btn-success" value="<%= lista[i].idinventario %>" onclick="obtener(value)" ><i class="fa fa-plus"></i></button>
                                     <div style="visibility: hidden">value = <%= lista[i].idinventario %></div>
+                                    <button id="add" class="btn btn-success" value="<%= lista[i].idinventario %>" onclick="obtener(value)" ><i class="fa fa-plus"></i></button>
                                 </td>
                               </tr>
                             <% } %>
@@ -294,8 +294,9 @@
                                             <a class="btn btn-success" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-pencil"></i></a>
                                         </div>
                                         <div class="col-sm-0.5">
-                                            <!-- Button trigger modal -->
-                                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                            <div style="visibility: hidden">value = <%= lis[i].idinventario %></div>
+                                            <button id="eliminar_item_factura" class="btn btn-danger" value="<%= lis.idinventario %>" onclick="obtener_edit_factura(value)" ><i class="fa fa-trash"></i></button>
+                                            
                                         </div>
                                       
                                     <% } %>

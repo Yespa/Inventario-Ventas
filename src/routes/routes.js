@@ -156,6 +156,22 @@ router.post("/addtocar", function(request,response){
 
 });
 
+///RUTA PARA ELIMINAR DESCARTAR UNA FACTURA COMPLETAMENTE - PAGINA VENTAS
+router.get('/delete_factura', function(request,response){
+
+  factura = [];
+  valor_pagar = 0;
+  total = [{total_pagar: '0',}];
+  response.redirect('/ventas');
+
+});
+
+///RUTA PARA ELIMINAR UN ITEM DE LA FACTURA
+
+
+///RUTA PARA EDITAR UN ITEM DE LA FACTURA
+
+
 ///RUTA PARA BUSCAR UN PRODUCTO EN EL INVENTARIO - PAGINA DE VENTAS
 router.post("/search_inventory", function(request,response){
   
