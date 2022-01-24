@@ -156,7 +156,7 @@ router.post("/addtocar", function(request,response){
 
 });
 
-///RUTA PARA ELIMINAR DESCARTAR UNA FACTURA COMPLETAMENTE - PAGINA VENTAS
+///RUTA PARA DESCARTAR UNA FACTURA COMPLETAMENTE - PAGINA VENTAS
 router.get('/delete_factura', function(request,response){
 
   factura = [];
@@ -167,9 +167,88 @@ router.get('/delete_factura', function(request,response){
 });
 
 ///RUTA PARA ELIMINAR UN ITEM DE LA FACTURA
+router.post('/delete_item_factura', function(request,response){
+
+  let dataedit = request.body;
+
+  for(var j = 0; j < factura.length; j++){
+    
+    if (factura[j].idinventario == parseInt(dataedit.id)){
+      break      
+    }    
+    
+  }
+
+  console.log(j)
+  factura.splice(j, 1);
+
+  valor_pagar = 0;
+  for(var i = 0; i < factura.length; i++){
+    total_prod = 0;
+    total_prod = (factura[i].precio_vent) * (factura[i].cant);
+    valor_pagar = total_prod + valor_pagar;
+        
+    console.log("Pague", factura[i].precio_vent, factura[i].cant,total_prod,valor_pagar);
+  }
+
+  total = [{total_pagar: valor_pagar,}];
 
 
-///RUTA PARA EDITAR UN ITEM DE LA FACTURA
+  response.send("Ok");
+
+});
+
+///RUTA PARA MOSTRAR EL ITEM DE LA FACTURA A EDITAR EN EL MODAL
+router.post('/mostrar_item_factura', function(request,response){
+
+  let dataupdate = request.body;
+
+ 
+  for(var j = 0; j < factura.length; j++){
+    
+    if (factura[j].idinventario == parseInt(dataupdate.id)){
+      break      
+    }    
+    
+  }
+
+  response.send(factura[j]);
+
+});
+
+///RUTA PARA EDITAR ITEM DE LA FACTURA
+
+router.post('/update_item_factura', function(request,response){
+
+  let dataupdatefactura = request.body;
+
+  for(var j = 0; j < factura.length; j++){
+    
+    if (factura[j].idinventario == parseInt(dataupdatefactura.idinventario)){
+      factura[j].cant = dataupdatefactura.cant;
+      factura[j].precio_vent = dataupdatefactura.precio_vent;
+      break      
+    }    
+    
+  }
+ 
+
+  valor_pagar = 0;
+  for(var i = 0; i < factura.length; i++){
+    total_prod = 0;
+    total_prod = (factura[i].precio_vent) * (factura[i].cant);
+    valor_pagar = total_prod + valor_pagar;
+        
+    console.log("Pague", factura[i].precio_vent, factura[i].cant,total_prod,valor_pagar);
+  }
+
+  total = [{total_pagar: valor_pagar,}];
+
+
+  response.send("Ok");
+
+});
+
 
 
 ///RUTA PARA BUSCAR UN PRODUCTO EN EL INVENTARIO - PAGINA DE VENTAS

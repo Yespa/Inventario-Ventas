@@ -3,12 +3,14 @@
 <head>
     <link rel="shortcut icon" href="/imagenes/iconos/icono_f.ico">
 	<link href="/css/icon_menu.css" rel="stylesheet">
-	<link href="/css/banner.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 	<link href="/css/estilo_ventas.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
 	<link href="/css/animate.css" rel="stylesheet">
     <link href="/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/alertas/css/themes/default.css" rel="stylesheet">
+    
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -69,6 +71,7 @@
         
 	</header>
 
+    <!-- Tarjeta informativas -->
     <div class="container">
         
         <article class="col-md-12 animate__animated animate__zoomIn">
@@ -77,7 +80,7 @@
 
         <section class="row">
 
-            <div class="col-md-4 ajuste animate__animated animate__fadeInBottomLeft">			
+            <div class="col-md-4 ajuste">			
                 <div class="card text-white" style="background-color: #0e2c40;">
                                         
                     <div class="card-body">
@@ -91,7 +94,7 @@
 
             
             
-            <div class="col-md-4 ajuste animate__animated animate__fadeInBottomRight">
+            <div class="col-md-4 ajuste">
                 <div class="card text-white" style="background-color: #006494;">
                     <div class="card-body">
                             
@@ -103,7 +106,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4 ajuste animate__animated animate__fadeInBottomLeft">
+            <div class="col-md-4 ajuste">
                 <div class="card text-white" style="background-color: #2970ca;">
                     <div class="card-body">
                                 
@@ -119,7 +122,6 @@
 
         </section>
     </div>
-    
 
     <!-- Buscador -->
     <div class="container">
@@ -218,102 +220,135 @@
         </div>
     </div>
 
+    
+    <!-- Ventana emergente de editar producto -->
+    <!-- Modal -->
+    <div class="modal fade" id="editproducmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Editar producto de factura</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    
+                    <div class="form-group">
+                      <label for="formGroupExampleInput">Producto</label>
+                      <input id="nameproductmodal_edit" type="text" class="form-control" placeholder="Nameproducto" readonly class="form-control-plaintext">
+                    </div>
+                    <div class="form-group">
+                      <label for="formGroupExampleInput2">Cantidad</label>
+                      <input id="cantproductmodal_edit" type="number" min="1" max="100" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">Precio</label>
+                        <input id="precioproductmodal_edit" type="number" class="form-control">
+                      </div>
+                  </form>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Descartar</button>
+            <button id="edit_prod_venta" type="button" class="btn btn-success">Editar item de la factura</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
     <!-- Inventario -->
     <div class="container">
-        
-		<div class="row mt-2">
-			<div class="col-md-6">
-				<table class="table table-sm table-bordered table-hover">
-					<thead>
-						<tr>
-                            <th>Código</th>
-							<th>Nombre</th>
-							<th>P. Venta</th>
-							<th>Cant.</th>
-                            <th>.</th>
-						</tr>
-					</thead>
 
-					<tbody>
-                        <% if (lista) { %>
-                            <% for(var i = 0; i < lista.length; i++) { %>
-                              <tr>
-                                <td><%= lista[i].id_prod %></td>
-                                <td><%= lista[i].name_prod %></td>
-								<td><%= lista[i].precio_venta %></td>
-                                <td><%= lista[i].cant %></td>
-                                <td>
-                                    <div style="visibility: hidden">value = <%= lista[i].idinventario %></div>
-                                    <button id="add" class="btn btn-success" value="<%= lista[i].idinventario %>" onclick="obtener(value)" ><i class="fa fa-plus"></i></button>
-                                </td>
-                              </tr>
-                            <% } %>
-                          <% } %>
+        <section class="row mt-1">
 
-					</tbody>
-				</table>
-			</div>
-
-			<div class="col-md-6">
-									
+            <div class="col-md-6">
                 <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table custom-table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Código</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">P. Venta</th>
+                                        <th scope="col">Cant</th>
+                                        <th scope="col">Edit</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <% if (lista) { %>
+                                        <% for(var i = 0; i < lista.length; i++) { %>
+                                        <tr>
+                                            <td><%= lista[i].id_prod %></td>
+                                            <td><%= lista[i].name_prod %></td>
+                                            <td><%= lista[i].precio_venta %></td>
+                                            <td><%= lista[i].cant %></td>
+                                            <td>
+                                                
+                                                <button id="add" class="btn btn-success" value="<%= lista[i].idinventario %>" onclick="obtener(value)" ><i class="fa fa-plus"></i></button>
+                                            </td>
+                                        </tr>
+                                        <% } %>
+                                    <% } %>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>        
+            </div>
+
+            <div class="col-md-6">
+									
+                <div class="card bg-light">
 					<div class="card-body">
-						                            
-						<form>
-                            <div class="form-group row">
-                                <div class="col-sm-5">
-                                    <h6 >Producto</h6>
-                                </div>
-                                <div class="col-sm-2">
-                                    <h6 >Cant.</h6>
-                                </div>
-                                <div class="col-sm-3">
-                                    <h6 >Precio</h6>
-                                </div>
-                                <div class="col-sm-0.5">
-                                    <h6 ></h6>
-                                </div>
-                                <div class="col-sm-0.5">
-                                    <h6 ></h6>
-                                </div>    
-                            </div>
-                            <div class="form-group row">
+						    
+                        <div class="table-responsive">
+
+                            <table class="table custom-table">
+                              <thead>
+                                <tr>
+                                  <th scope="col">Producto.</th>
+                                  <th scope="col">Cant.</th>
+                                  <th scope="col">Precio</th>
+                                  <th scope="col">Edit</th>
+                                </tr>
+                              </thead>
+                              <tbody>
                                 <% if (lis) { %>
                                     <% for(var i = 0; i < lis.length; i++) { %>
-                                        <div class="col-sm-5">
-                                            <input type="text" name="nameprod" value="<%= lis[i].nameprod %>" readonly class="form-control-plaintext">
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <input type="number" min="1" max="100" name="cant" class="form-control" value="<%= lis[i].cant %>" readonly class="form-control-plaintext">
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <input type="number" name="precio_vent" value="<%= lis[i].precio_vent %>" class="form-control" readonly class="form-control-plaintext">
-                                        </div>
-                                        <div class="col-sm-0.5">
-                                            <!-- Button trigger modal -->
-                                            <a class="btn btn-success" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-pencil"></i></a>
-                                        </div>
-                                        <div class="col-sm-0.5">
-                                            <div style="visibility: hidden">value = <%= lis[i].idinventario %></div>
-                                            <button id="eliminar_item_factura" class="btn btn-danger" value="<%= lis.idinventario %>" onclick="obtener_edit_factura(value)" ><i class="fa fa-trash"></i></button>
-                                            
-                                        </div>
-                                      
+                                    <tr>
+                                        <td><input type="text" name="nameprod" value="<%= lis[i].nameprod %>" style="font-size: 10pt" readonly class="form-control-plaintext"></td>
+                                        <td><input type="number" min="1" max="100" name="cant" class="form-control" value="<%= lis[i].cant %>" style="font-size: 10pt" readonly class="form-control-plaintext"></td>
+                                        <td><input type="number" name="precio_vent" value="<%= lis[i].precio_vent %>" class="form-control" style="font-size: 10pt" readonly class="form-control-plaintext"></td>
+                                        <td>
+                                        
+                                            <button id="update_item_factura" class="btn btn-success" value="<%= lis[i].idinventario %>" onclick="obtener_update_factura(value)" ><i class="fa fa-pencil"></i></button>
+                                            <button id="eliminar_item_factura" class="btn btn-danger" value="<%= lis[i].idinventario %>" onclick="obtener_edit_factura(value)" ><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
                                     <% } %>
-                                  <% } %>
+                                <% } %>      
+ 
+                              </tbody>
+                            </table>
+                        </div>
 
-                                
-                            </div>
 
-                          </form>
 					</div>
 				</div>
-				
 
 			</div>
-		</div>
 
+        </section>
+
+
+			
 	</div>
+
 	 
 	 
 	<footer class="animate__animated animate__slideInUp">
